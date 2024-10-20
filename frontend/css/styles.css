@@ -67,3 +67,36 @@ h1 {
     background-color: #00695c; 
     border-radius: 6px; 
 }
+
+.search {
+    --padding: 12px; 
+    width: max-content;
+    display: flex;
+    align-items: center;
+    padding: var(--padding);
+    border-radius: 24px; 
+    box-shadow: 0 0 24px rgba(0, 123, 255 , 0.75);
+    background: #f6f6f6;
+}
+
+.search-input {
+    font-size: 14px; 
+    font-family: 'Times New Roman', Times, serif;
+    color: #333333;
+    margin-left: var(--padding);
+    outline: blue;
+    border: none;
+    background: transparent;
+    width: 250px; 
+}
+
+.search-input::placeholder {
+    color: rgba(0, 0, 0, 0.50);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px; 
+}

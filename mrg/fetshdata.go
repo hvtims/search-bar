@@ -5,8 +5,9 @@ import (
 	"net/http"
 )
 
+var artist Artist
+
 func fetchArtist(apiURL string) (Artist, error) {
-	var artist Artist
 	resp, err := http.Get(apiURL)
 	if err != nil {
 		return artist, err
@@ -28,7 +29,7 @@ func fetchArtists(apiURL string) (Artists, error) {
 	defer resp.Body.Close()
 
 	var artists Artists
-	
+
 	err = json.NewDecoder(resp.Body).Decode(&artists)
 	if err != nil {
 		return nil, err

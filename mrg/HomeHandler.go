@@ -6,15 +6,15 @@ import (
 )
 
 func HandleHome(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/" {
-		http.Redirect(w, r, "/404", http.StatusFound)
-		return
-	}
-	if r.Method != "GET" {
-		w.WriteHeader(http.StatusMethodNotAllowed)
-		http.ServeFile(w, r, "templates/405.html")
-		return
-	}
+	// if r.URL.Path != "/" {
+	// 	http.Redirect(w, r, "/404", http.StatusFound)
+	// 	return
+	// }
+	// if r.Method != "GET" {
+	// 	w.WriteHeader(http.StatusMethodNotAllowed)
+	// 	http.ServeFile(w, r, "templates/405.html")
+	// 	return
+	// }
 	apiArtist := "https://groupietrackers.herokuapp.com/api/artists"
 
 	artists, err := fetchArtists(apiArtist)

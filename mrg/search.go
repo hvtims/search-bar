@@ -1,18 +1,16 @@
 package mrg
 
-// import "net/http"
+import (
+	"html/template"
+	"net/http"
+)
 
-// func Search(w http.ResponseWriter, r *http.Request) {
-// 	if r.Method != "GET" {
-// 		w.WriteHeader(http.StatusBadRequest)
-// 		http.ServeFile(w, r, "templates/405.html")
-// 	}
-// 	apiArtist := "https://groupietrackers.herokuapp.com/api/artists"
-
-// 	artists, err := fetchLocation(apiArtist)
-// 	if err != nil {
-// 		w.WriteHeader(http.StatusInternalServerError)
-// 		http.ServeFile(w, r, "templates/500.html")
-// 		return
-// 	}
-// }
+func Search(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("templates/Search.html")
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		http.ServeFile(w, r, "templates/500.html")
+		return
+	}
+	tmpl.Execute(w, nil)
+}

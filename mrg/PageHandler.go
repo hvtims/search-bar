@@ -7,11 +7,11 @@ import (
 )
 
 func HandlePage(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "GET" {
-		w.WriteHeader(http.StatusMethodNotAllowed)
-		http.ServeFile(w, r, "templates/405.html")
-		return
-	}
+	// if r.Method != "GET" {
+	// 	w.WriteHeader(http.StatusMethodNotAllowed)
+	// 	http.ServeFile(w, r, "templates/405.html")
+	// 	return
+	// }
 	id := r.PathValue("id")
 	idd, err := strconv.Atoi(id)
 	if err != nil {

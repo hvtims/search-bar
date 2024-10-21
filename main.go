@@ -18,6 +18,7 @@ func main() {
 	http.HandleFunc("/Artist/{id}", mrg.HandlePage)
 	http.HandleFunc("/404", mrg.ErrorHandler)
 	http.HandleFunc("/frontend/css/", mrg.CssHandler)
+	http.HandleFunc("/Search", mrg.Search)
 	http.HandleFunc("/frontend/images/", mrg.ImageHandler)
 	http.ListenAndServe(":8080", nil)
 }

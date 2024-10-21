@@ -33,18 +33,21 @@ func Search(w http.ResponseWriter, r *http.Request) {
 
 			artist, err = fetchRelations(artist)
 			if err != nil {
-				fmt.Printf("Error fetching relations for artist %s: %v\n", artist.Name, err)
-				continue
+				w.WriteHeader(http.StatusInternalServerError)
+				http.ServeFile(w, r, "templates/500.html")
+				return
 			}
 			artist, err = fetchLocation(artist)
 			if err != nil {
-				fmt.Printf("Error fetching location for artist %s: %v\n", artist.Name, err)
-				continue
+				w.WriteHeader(http.StatusInternalServerError)
+				http.ServeFile(w, r, "templates/500.html")
+				return
 			}
 			artist, err = fetchDates(artist)
 			if err != nil {
-				fmt.Printf("Error fetching dates for artist %s: %v\n", artist.Name, err)
-				continue
+				w.WriteHeader(http.StatusInternalServerError)
+				http.ServeFile(w, r, "templates/500.html")
+				return
 			}
 			searchResults = append(searchResults, artist)
 		}
@@ -59,7 +62,6 @@ func Search(w http.ResponseWriter, r *http.Request) {
 
 	err = tmpl.Execute(w, searchResults)
 	if err != nil {
-		fmt.Println("Error executing template:", err)
 		w.WriteHeader(http.StatusInternalServerError)
 		http.ServeFile(w, r, "templates/500.html")
 		return

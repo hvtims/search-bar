@@ -52,6 +52,12 @@ func Search(w http.ResponseWriter, r *http.Request) {
 			searchResults = append(searchResults, artist)
 		}
 	}
+	println(len(searchResults))
+	if len(searchResults) == 0{
+		w.WriteHeader(http.StatusBadRequest)
+		http.ServeFile(w, r, "templates/400.html")
+		return
+	}
 
 	tmpl, err := template.ParseFiles("templates/Search.html")
 	if err != nil {

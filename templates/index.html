@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title>Groupie Tracker</title>
+    <link rel="stylesheet" href="/frontend/css/styles.css"> <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search" />
+    
+</head>
+<body>
+    <h1>Groupie Tracker</h1>
+        <form action ="/Search" method="GET">
+        <div class="container">
+            <div class ="search">
+                <span class ="search-icon material-symbols-outlined">search</span>
+              
+                    <input name ="input" list ="search-options" class="search-input" type ="search" placeholder="Search">
+               
+                <datalist id = "search-options">
+                    <option value="Apple">
+                        <option value="Banana">
+                        <option value="Cherry">
+                        <option value="Date">
+                        <option value="Elderberry">
+
+                </datalist>
+            
+            </div>
+        </div>
+        </form>
+    <div class="bands">
+        {{range .}}
+        <div class="band-info">
+            <h2>{{.Name}}</h2>
+            <a href="/Artist/{{.ID}}"> 
+                <img src="{{.Image}}" alt="{{.Name}} Image" width="200px">
+            </a>
+        </div>
+        {{end}}
+    </div>
+</body>
+</html>

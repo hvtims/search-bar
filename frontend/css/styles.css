@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f8f8f8;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.bands {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.band-info {
+    border: 2px solid #007BFF; 
+    border-radius: 10px;
+    padding: 20px;
+    margin: 15px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 300px; 
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.band-info:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.band-info img {
+    display: block;
+    margin: 0 auto 10px; 
+}
+
+.band-info h2 {
+    text-align: center;
+    color: #007BFF; 
+}
+
+.band-info ul {
+    padding-left: 20px; 
+}
+
+.band-info p {
+    margin: 5px 0; 
+}
+
+::-webkit-scrollbar {
+    width: 12px; 
+    background-color: #00695c; 
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ffffff; 
+    border-radius: 6px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #e0e0e0; 
+}
+
+::-webkit-scrollbar-track {
+    background-color: #00695c; 
+    border-radius: 6px; 
+}
+
+.search {
+    --padding: 12px; 
+    width: max-content;
+    display: flex;
+    align-items: center;
+    padding: var(--padding);
+    border-radius: 24px; 
+    box-shadow: 0 0 24px rgba(0, 123, 255 , 0.75);
+    background: #f6f6f6;
+}
+
+.search-input {
+    font-size: 14px; 
+    font-family: 'Times New Roman', Times, serif;
+    color: #333333;
+    margin-left: var(--padding);
+    outline: blue;
+    border: none;
+    background: transparent;
+    width: 250px; 
+}
+
+.search-input::placeholder {
+    color: rgba(0, 0, 0, 0.50);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px; 
+}

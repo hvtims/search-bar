@@ -21,14 +21,14 @@ func fetchArtist(apiURL string) (Artist, error) {
 	return artist, nil
 }
 
+var artists Artists
+
 func fetchArtists(apiURL string) (Artists, error) {
 	resp, err := http.Get(apiURL)
 	if err != nil {
 		return nil, err
 	}
 	defer resp.Body.Close()
-
-	var artists Artists
 
 	err = json.NewDecoder(resp.Body).Decode(&artists)
 	if err != nil {

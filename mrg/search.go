@@ -7,6 +7,8 @@ import (
 	"strings"
 )
 
+var searchResults Artists
+
 func Search(w http.ResponseWriter, r *http.Request) {
 	input := r.FormValue("input")
 	if len(input) == 0 || len(input) >= 41 {
@@ -17,32 +19,10 @@ func Search(w http.ResponseWriter, r *http.Request) {
 	search := strings.ToLower(input)
 
 	apiURL := "https://groupietrackers.herokuapp.com/api/artists"
-	artists, err := fetchArtists(apiURL)
-	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
-		http.ServeFile(w, r, "templates/500.html")
-		return
-	}
-
-	var searchResults Artists
-	artist, err = fetchRelations(artist)
-	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
-		http.ServeFile(w, r, "templates/500.html")
-		return
-	}
-	artist, err = fetchLocation(artist)
-	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
-		http.ServeFile(w, r, "templates/500.html")
-		return
-	}
-	artist, err = fetchDates(artist)
-	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
-		http.ServeFile(w, r, "templates/500.html")
-		return
-	}
+	artists, _ := fetchArtists(apiURL)
+	artist, _ = fetchRelations(artist)
+	artist, _ = fetchLocation(artist)
+	artist, _ = fetchDates(artist)
 
 	for _, artist := range artists {
 		if strings.Contains(strings.ToLower(artist.Name), search) ||

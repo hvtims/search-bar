@@ -10,6 +10,9 @@ import (
 var searchResults Artists
 
 func Search(w http.ResponseWriter, r *http.Request) {
+	// Clear the searchResults at the beginning of each search
+	searchResults = Artists{}
+	seen := make(map[string]bool)
 	input := r.FormValue("input")
 	if len(input) == 0 || len(input) >= 41 {
 		w.WriteHeader(http.StatusBadRequest)
@@ -25,11 +28,18 @@ func Search(w http.ResponseWriter, r *http.Request) {
 	artist, _ = fetchDates(artist)
 
 	for _, artist := range artists {
+		key := artist.Name
+
+		if seen[key] {
+			continue
+		}
+
 		if strings.Contains(strings.ToLower(artist.Name), search) ||
 			contains(artist.Members, search) ||
 			strings.Contains(strings.ToLower(artist.FirstAlbum), search) ||
 			fmt.Sprintf("%d", artist.CreationDate) == search ||
 			contains(artist.Location.Locations, search) {
+			seen[key] = true
 			searchResults = append(searchResults, artist)
 		}
 	}
